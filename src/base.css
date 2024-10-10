@@ -1,0 +1,192 @@
+/**
+	One style-sheet to rule them all, as I truly hate writing CSS. Most of this
+	is inspired by: https://github.com/appcss/app, but I didn't feel like
+	adopting the framework in its' entirety.
+	**/
+
+@charset "UTF-8";
+
+/* inter-latin-wght-normal */
+@font-face {
+    font-family: "Inter Variable";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.woff2)
+    format("woff2-variations");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    /* Font Base Values */
+    --app-font-family: "Inter Variable", system-ui, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --app-line-height: 1.5;
+    --app-font-weight: 400;
+    --app-title-font-weight: 900;
+    --app-font-size: 100%;
+    --app-text-underline-offset: 0.1rem;
+
+    /* Spacing */
+    --app-spacing: 1rem;
+    --app-typography-spacing-vertical: var(--app-spacing);
+    --app-block-spacing-vertical: var(--app-spacing);
+    --app-block-spacing-horizontal: var(--app-spacing);
+    --app-grid-column-gap: var(--app-spacing);
+    --app-grid-row-gap: var(--app-spacing);
+
+    /* Colors */
+    --bg-dark: #000000;
+    --bg-dark--contrast: #2c292d;
+    --text-dark: #ffffff;
+
+    --bg-light: #ffffff;
+    --bg-light--contrast: #fefdfb;
+    --text-light: #000000;
+
+    --app-accent-color: rgb(247, 69, 75);
+    --app-accent-color--shadow: rgba(247, 69, 69, 0.5);
+    --app-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(129, 145, 181, 0.01698), 0.0335rem 0.067rem 0.402rem rgba(129, 145, 181, 0.024), 0.0625rem 0.125rem 0.75rem rgba(129, 145, 181, 0.03), 0.1125rem 0.225rem 1.35rem rgba(129, 145, 181, 0.036), 0.2085rem 0.417rem 2.502rem rgba(129, 145, 181, 0.04302), 0.5rem 1rem 6rem rgba(129, 145, 181, 0.06), 0 0 0 0.0625rem rgba(129, 145, 181, 0.015);
+}
+
+/* Screen Sizes */
+@media (min-width: 576px) {
+    :root {
+        --app-font-size: 106.25%;
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --app-font-size: 112.5%;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --app-font-size: 118.75%;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --app-font-size: 125%;
+    }
+}
+
+@media (min-width: 1536px) {
+    :root {
+        --app-font-size: 131.25%;
+    }
+}
+
+:root {
+    color-scheme: light dark;
+    --color-background--contrast: light-dark(
+            var(--bg-light--contrast),
+            var(--bg-dark--contrast)
+    );
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+::before,
+::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
+}
+
+:where(:root) {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    background-color: light-dark(var(--bg-light), var(--bg-dark));
+    color: light-dark(var(--text-light), var(--text-dark));
+    font-weight: var(--app-font-weight);
+    font-size: var(--app-font-size);
+    line-height: var(--app-line-height);
+    font-family: var(--app-font-family), sans-serif;
+    text-underline-offset: var(--app-text-underline-offset);
+    text-rendering: optimizeLegibility;
+    overflow-wrap: break-word;
+    -moz-tab-size: 4;
+    tab-size: 4;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    transition:
+            color 0.5s,
+            background-color 0.5s;
+
+    font-family: var(--app-font-family), sans-serif;
+    font-size: var(--app-font-size);
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    display: block;
+}
+
+#app > header,
+#app > main,
+#app > footer {
+    padding-block: var(--app-block-spacing-vertical);
+}
+
+.container,
+.container-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--app-spacing);
+    padding-left: var(--app-spacing);
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 510px;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 700px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 950px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1450px;
+    }
+}
+
+h1 {
+    font-weight: var(--app-title-font-weight);
+}
