@@ -8,7 +8,7 @@ const timeAgo = useTimeAgo(date)
 
 <template>
   <header>
-    <h1>Intervals</h1>
+    <h1>PWA Starter</h1>
   </header>
   <main>
     Under Construction
